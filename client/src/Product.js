@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 
 const Product = () => {
+    let amount = 0
     const [price , setPrice] = useState(0)
     const [product , setProduct] = useState('')
     const [resData , setResData] = useState([])
@@ -42,11 +43,13 @@ console.log(resData)
         </form>
         <ol>
         {resData?.map(item=>{
+            amount+=item.price
             return(
                 <li>Product Name : {item.product} Product price :{item.price} <button onClick={()=>deleteHandler(item.id)}>Delete</button></li>
                 )
             })}
             </ol>
+            <span>The Value Worth of Product Rs .{amount}</span>
     </div>
   )
 }
